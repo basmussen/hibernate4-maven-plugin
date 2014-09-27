@@ -72,6 +72,9 @@ public class SchemaExportMojo extends AbstractMojo
     @Parameter(property = "sqlDropFile", defaultValue = "drop.sql")
     String sqlDropFile;
 
+    @Parameter(property = "sqlDelimiter")
+    String sqlDelimiter;
+
     /**
      * Maven project
      */
@@ -243,6 +246,12 @@ public class SchemaExportMojo extends AbstractMojo
         {
             writer.write(formatter.format(line));
         }
+
+        if (sqlDelimiter != null)
+        {
+            writer.write(sqlDelimiter);
+        }
+
         writer.flush();
     }
 }

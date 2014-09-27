@@ -26,6 +26,7 @@ public class SchemaExportMojoTest extends TestCase
         mojo.outputDirectory = new File("target/junit");
         mojo.sqlCreateFile = "create.sql";
         mojo.sqlDropFile = "drop.sql";
+        mojo.sqlDelimiter = ";";
 
         MavenProject mavenProject = mock(MavenProject.class);
         mojo.project = mavenProject;
