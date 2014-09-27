@@ -58,7 +58,7 @@ public class SchemaExportMojo extends AbstractMojo
      * Default export directory
      */
     @Parameter(defaultValue = "${project.build.directory}/generated-sources/sql/", required = true)
-    File exportDirectory;
+    File outputDirectory;
 
     /**
      * Filename create sql
@@ -87,7 +87,7 @@ public class SchemaExportMojo extends AbstractMojo
         File createFile = null;
         if (sqlCreateFile != null)
         {
-            createFile = new File(exportDirectory, sqlCreateFile);
+            createFile = new File(outputDirectory, sqlCreateFile);
             getLog().info("Sql create file:  " + createFile.getAbsolutePath());
         }
 
@@ -95,7 +95,7 @@ public class SchemaExportMojo extends AbstractMojo
         File dropFile = null;
         if (sqlDropFile != null)
         {
-            dropFile = new File(exportDirectory, sqlDropFile);
+            dropFile = new File(outputDirectory, sqlDropFile);
             getLog().info("Sql drop file:  " + dropFile.getAbsolutePath());
         }
 
@@ -103,7 +103,7 @@ public class SchemaExportMojo extends AbstractMojo
         Writer createWriter = null;
         try
         {
-            initialise(exportDirectory);
+            initialise(outputDirectory);
 
             // classpath elements
             URL[] urls = getCompileClasspathElements();

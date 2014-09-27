@@ -23,7 +23,7 @@ public class SchemaExportMojoTest extends TestCase
 
         mojo.packageToScan = "hibernate.test.entity";
         mojo.dialect = "org.hibernate.dialect.HSQLDialect";
-        mojo.exportDirectory = new File("target/junit");
+        mojo.outputDirectory = new File("target/junit");
         mojo.sqlCreateFile = "create.sql";
         mojo.sqlDropFile = "drop.sql";
 
@@ -32,11 +32,11 @@ public class SchemaExportMojoTest extends TestCase
 
         mojo.execute();
 
-        assertTrue("create file exists", new File(mojo.exportDirectory, mojo.sqlCreateFile).exists());
-        assertTrue("drop file exists", new File(mojo.exportDirectory, mojo.sqlDropFile).exists());
+        assertTrue("create file exists", new File(mojo.outputDirectory, mojo.sqlCreateFile).exists());
+        assertTrue("drop file exists", new File(mojo.outputDirectory, mojo.sqlDropFile).exists());
 
-        assertTrue("create file not empty", new File(mojo.exportDirectory, mojo.sqlCreateFile).length() > 0);
-        assertTrue("drop file not empty", new File(mojo.exportDirectory, mojo.sqlDropFile).length() > 0);
+        assertTrue("create file not empty", new File(mojo.outputDirectory, mojo.sqlCreateFile).length() > 0);
+        assertTrue("drop file not empty", new File(mojo.outputDirectory, mojo.sqlDropFile).length() > 0);
 
     }
 
